@@ -1,25 +1,82 @@
 {
   "expo": {
-    "name": "finai-mobile",
+    "name": "FinAI",
     "slug": "finai-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.finai.mobile",
+      "infoPlist": {
+        "NSCameraUsageDescription": "FinAI requires camera access to scan physical receipts and bills.",
+        "NSFaceIDUsageDescription": "FinAI uses Face ID to securely authenticate your financial vault."
+      }
     },
     "android": {
+      "package": "com.finai.mobile",
+      "versionCode": 1,
+      "predictiveBackGestureEnabled": false,
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "monochromeImage": "./assets/android-icon-monochrome.png",
+        "backgroundColor": "#07241A"
       },
-      "predictiveBackGestureEnabled": false
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#07241A"
+        }
+      ],
+      "expo-secure-store",
+      "@react-native-community/datetimepicker",
+      "expo-sharing",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow FinAI to access your camera to scan expense receipts."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow FinAI to access your photo gallery to upload receipts and profile photos.",
+          "cameraPermission": "Allow FinAI to access your camera to scan expense receipts."
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow FinAI to authenticate your account with biometrics."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "33132637-9a76-4826-9493-3136464b6bed"
+      }
+    },
+    "owner": "rocke33"
   }
 }
